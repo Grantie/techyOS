@@ -11,6 +11,67 @@
     <script src="/script.js" defer></script>
   </head>
   <body>
+    <div class="loading">
+      <img src="/assets/imgs/pfp.png" alt="my profile picture" />
+    </div>
+
+    <style>
+      body {
+        overflow: hidden;
+      }
+
+      .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: var(--blue);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .loading img {
+        min-width: 300px;
+        max-width: 25%;
+        border-radius: 50%;
+        animation: spin 2s ease-in-out infinite;
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+
+    <script>
+      document.body.onload = () => {
+        setTimeout(() => {
+          document.querySelector("body").style.overflow = "auto";
+          document.querySelector(".loading").style.animation =
+            "fadeOut 1s forwards ease-out";
+          document.querySelector(".loading").style.pointerEvents = "none";
+          setTimeout(() => {
+            document.querySelector(".loading").remove();
+          }, 1000);
+        }, 2000);
+      };
+    </script>
+
     <nav>
       <a class="navBrand" href="/">techyOS</a>
       <ul>
